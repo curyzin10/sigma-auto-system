@@ -1,0 +1,140 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rede Sigma - Sistema de Controle</title>
+    <link rel="stylesheet" href="{% static 'css/home/home.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Ajuste de estilo para o main */
+        main {
+            background-color: white;
+            padding: 20px;
+        }
+
+        .center-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin: 0 auto;
+            max-width: 800px;
+        }
+
+        .blue-text {
+            color: blue;
+        }
+
+        /* Estilo da tabela */
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #f2f2f2;
+        }
+
+        .car-specs h2 {
+            color: #2c3e50;
+            font-size: 32px;
+        }
+
+        .btn-custom {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .btn-custom:hover {
+            background-color: #2980b9;
+        }
+
+        .btn-back {
+            margin-top: 20px;
+            background-color: #95a5a6;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .btn-back:hover {
+            background-color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <h1>Rede Sigma - Sistema de Controle de Veículos</h1>
+    </div>
+</header>
+
+    <main>
+        <!-- Aplica a classe center-content aqui -->
+        <section id="descricao" class="center-content">
+            <img src="{% static 'img/honda.png' %}" alt="Imagem BMW Série 3" style="width:100%; max-width:400px;">
+            <div class="car-specs">
+                <h2 class="blue-text">BMW Série 3 2024</h2>
+                <p class="blue-text">Preço: R$ 179.990</p>
+            </div>
+        </section>
+
+        <section id="caracteristicas" class="center-content">
+            <h3>Características</h3>
+            <ul>
+                <li>Motor: 2.0 Turbo</li>
+                <li>Potência: 204 cv</li>
+                <li>Transmissão: Automática de 9 velocidades</li>
+                <li>Consumo médio: 12 km/l na cidade, 16 km/l na estrada</li>
+                <li>Assentos: 5</li>
+                <li>Tecnologias de Assistência ao Motorista: Controle de cruzeiro adaptativo, frenagem automática de emergência, assistente de permanência na faixa.</li>
+            </ul>
+            <p>A BMW Série 3 2024 é um sedã esportivo que combina desempenho, tecnologia e luxo. Ideal para quem busca uma condução dinâmica e segura.</p>
+        </section>
+
+        <section id="especificacoes" class="center-content">
+            <h3>Especificações Técnicas</h3>
+            <table>
+                <tr>
+                    <th>Dimensão</th>
+                    <td>4,71 m x 1,82 m x 1,43 m</td>
+                </tr>
+                <tr>
+                    <th>Peso</th>
+                    <td>1.550 kg</td>
+                </tr>
+                <tr>
+                    <th>Capacidade do Porta-malas</th>
+                    <td>480 litros</td>
+                </tr>
+                <tr>
+                    <th>Combustível</th>
+                    <td>Gasolina</td>
+                </tr>
+                <tr>
+                    <th>Cor</th>
+                    <td>Preto, Branco, Prata, Azul</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- Botão de Voltar para a página anterior -->
+        <button onclick="window.history.back()" class="btn btn-custom center-content">Voltar aos veículos</button>
+    </main>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{% load static %}
+<!-- templates/_veiculo_card.html -->
+<div class="veiculo-card">
+    <img src="{% static 'img/honda.png' %}" class="card-img-top" alt="{{ veiculo.modelo }}">
+    <div class="card-body">
+        <h5 class="card-title">{{ veiculo.marca }} {{ veiculo.modelo }}</h5>
+        {% load currency %}
+        <p class="card-price">Preço: {{ veiculo.valor|currency }}</p>
+        <p class="card-details">Ano: {{ veiculo.ano_fab }} | Cor: {{ veiculo.cor }}</p>
+        <a href="{% url 'veiculo_detalhes' veiculo.pk %}" class="btn btn-primary">Ver Detalhes</a>
+    </div>
+</div>

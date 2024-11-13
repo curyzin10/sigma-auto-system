@@ -59,3 +59,8 @@ def veiculo_delete(request, pk):
         'item_value': item_value,
         'cancel_url': cancel_url,
     })
+
+
+def veiculo_detalhes(request, pk):
+    veiculo = get_object_or_404(Veiculo, pk=pk)
+    return render(request, 'veiculo/veiculo_detalhes.html', {'veiculo': veiculo})

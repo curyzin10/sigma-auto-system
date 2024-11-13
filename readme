@@ -1,9 +1,13 @@
-### INICIAR PROJETO ###
-python manage.py runserver
+### CRIAR AMBIENTE VIRTUAL
+python -m venv venv
+venv\Scripts\activate
 
+### Instalar dependencias
+pip install -r requirements.txt
 
 ### CRIAR TABELAS NO BANCO DE DADOS ###
 python manage.py makemigrations
 python manage.py migrate
 
-
+### INICIAR PROJETO ###
+python manage.py runserver
