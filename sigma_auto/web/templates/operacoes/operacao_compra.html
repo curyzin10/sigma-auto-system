@@ -1,0 +1,120 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operação de compra - Listagem</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .new-operation-button {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 4px;
+            text-decoration: none;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .new-operation-button:hover {
+            background-color: #0056b3;
+        }
+        .operation-list {
+            margin-top: 20px;
+        }
+        .operation-item {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .operation-info {
+            flex-grow: 1;
+        }
+        .operation-info strong {
+            color: #333;
+        }
+        .operation-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        .edit-button, .delete-button {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .edit-button {
+            background-color: #28a745;
+            color: #fff;
+        }
+        .edit-button:hover {
+            background-color: #218838;
+        }
+        .delete-button {
+            background-color: #dc3545;
+            color: #fff;
+        }
+        .delete-button:hover {
+            background-color: #c82333;
+        }
+    </style>
+    <link rel="stylesheet" href="{% static 'css/home_btn.css' %}">
+</head>
+<body>
+<h1>Operação de Compra - Listagem</h1>
+<div class="container">
+    <!-- Botão para nova operação de venda -->
+    <a href="{% url 'operacao_compra_create' %}" class="new-operation-button">Registrar Nova Compra</a>
+
+    <!-- Lista de Operações de Venda Realizadas -->
+    <div class="operation-list">
+        <h2>Operações de compra realizadas</h2>
+        {% for operacao_compra in operacoes_compra %}
+        <div class="operation-item">
+            <div class="operation-info">
+                <strong>Número da Venda:</strong> {{ operacao_compra.numero}} <br>
+                <strong>Data:</strong> {{ operacao_compra.data}} <br>
+                <strong>Cliente (CPF):</strong> {{ operacao_compra.cliente.nome}} <br>
+                <strong>Vendedor (Código):</strong> {{ operacao_compra.vendedor.nome}} <br>
+                <strong>Veículo (Chassi):</strong> {{ operacao_compra.veiculo.marca }} {{ operacao_compra.veiculo.modelo }} <br>
+                {% load currency %}
+                <strong>Valor Total:</strong> {{ operacao_compra.valor|currency}}
+            </div>
+            <div class="operation-buttons">
+                <button class="edit-button"
+                        onclick="window.location.href='{% url 'operacao_compra_update' operacao_compra.pk %}'">Editar
+                </button>
+                <button class="delete-button"
+                        onclick="window.location.href='{% url 'operacao_compra_delete' operacao_compra.pk %}'">
+                    Excluir
+                </button>
+
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <a href="{% url 'operacoes_page' %}" class="btn back-btn">Voltar</a>
+</div>
+</body>
+</html>

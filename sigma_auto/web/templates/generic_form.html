@@ -1,0 +1,33 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/cliente/cliente_form.css' %}">
+    <title>{% if form.instance.pk %}Editar{% else %}Criar Novo{% endif %} {{ model_name }}</title>
+    <script src="https://unpkg.com/imask"></script> <!-- IMask CDN for formatting -->
+</head>
+<body>
+<div class="form-container">
+
+    <!-- Form Title -->
+    <h1>{% if form.instance.pk %}Editar{% else %}Criar Novo{% endif %} {{ model_name }}</h1>
+
+    <!-- Form -->
+    <form id="veiculoForm" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.as_p }} <!-- Renders form fields -->
+        </div>
+        <div class="form-buttons">
+            <button type="submit" class="btn save-btn">Salvar</button>
+            <a href="javascript:void(0);" class="btn cancel-btn"
+               onclick="window.location.replace('{% url cancel_url %}')">Cancelar</a>
+
+        </div>
+    </form>
+</div>
+</body>
+</html>

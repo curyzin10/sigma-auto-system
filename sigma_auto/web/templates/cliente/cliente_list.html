@@ -1,0 +1,46 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home_btn.css' %}">
+    <title>Lista de {{ model_name }}</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Lista de {{ model_name }}</h1>
+       <a href="{% url 'cliente_create' %}" class="btn">Criar Novo {{ model_name }}</a>
+
+
+        <!-- Tabela de {{ model_name }} -->
+        <table class="clientes-table">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>CELULAR</th>
+                    <th>RENDA</th>
+                    <th>Editar</th>
+                    <th>Deletar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cliente in clientes %}
+                    <tr>
+                        <td>{{ cliente.nome }}</td>
+                        <td>{{ cliente.cpf }}</td>
+                        <td>{{ cliente.celular }}</td>
+                        <td>{{ cliente.renda }}</td>
+                        <td><a href="{% url 'cliente_update' cliente.pk %}" class="btn edit-btn">Editar</a></td>
+                        <td><a href="{% url 'cliente_delete' cliente.pk %}" class="btn delete-btn">Deletar</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <a href="{% url 'home' %}" class="btn back-btn">Voltar</a>
+</body>
+</html>

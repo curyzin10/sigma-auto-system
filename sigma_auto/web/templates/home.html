@@ -1,0 +1,48 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rede Sigma - Sistema de Controle</title>
+    <link rel="stylesheet" href="{% static 'css/home/home.css' %}">
+</head>
+<body>
+<header>
+    <div class="container">
+        <h1>Rede Sigma - Sistema de Controle de Veículos</h1>
+        <nav>
+            <a href="{% url 'veiculo_page' %}">Veículos</a>
+            <a href="{% url 'cliente_list' %}">Clientes</a>
+            <a href="{% url 'vendedor_list' %}">Vendedores</a>
+            <a href="{% url 'montadora_list' %}">Montadoras</a>
+            <a href="{% url 'operacoes_page' %}">Operações</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <div class="container">
+        <h2>Lista de Veículos</h2>
+        <div class="card-deck">
+            {% for veiculo in veiculos %}
+                <div class="card veiculo-card">
+                    <img src="{% static 'img/honda.png' %}" class="card-img-top" alt="{{ veiculo.modelo }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ veiculo.marca }} {{ veiculo.modelo }}</h5>
+                        {% load currency %}
+                        <p class="card-price">{{ veiculo.valor|currency }}</p>
+                        <p class="card-details">Ano: {{ veiculo.ano_fab }} | Cor: {{ veiculo.cor }}</p>
+
+                    </div>
+                </div>
+            {% empty %}
+                <p>Nenhum veículo encontrado.</p>
+            {% endfor %}
+        </div>
+    </div>
+</main>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home_btn.css' %}">
+    <title>Montadoras</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Lista de montadoras</h1>
+       <a href="{% url 'montadora_create' %}" class="btn">Cadastrar montadora</a>
+
+
+        <!-- Tabela de {{ model_name }} -->
+        <table class="clientes-table">
+            <thead>
+                <tr>
+                    <th>razao_social</th>
+                    <th>cnpj</th>
+                    <th>marca</th>
+                    <th>contato</th>
+                    <th>tel_comercial</th>
+                    <th>celular</th>
+                    <th>Editar</th>
+                    <th>Deletar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for montadora in montadoras %}
+                    <tr>
+                        <td>{{ montadora.razao_social }}</td>
+                        <td>{{ montadora.cnpj }}</td>
+                        <td>{{ montadora.marca }}</td>
+                        <td>{{ montadora.contato }}</td>
+                        <td>{{ montadora.tel_comercial }}</td>
+                        <td>{{ montadora.celular }}</td>
+                        <td><a href="{% url 'montadora_update' montadora.pk %}" class="btn edit-btn">Editar</a></td>
+                        <td><a href="{% url 'montadora_delete' montadora.pk %}" class="btn delete-btn">Deletar</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <a href="{% url 'home' %}" class="btn back-btn">Voltar</a>
+</body>
+</html>

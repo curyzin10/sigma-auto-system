@@ -1,0 +1,9 @@
+### INICIAR PROJETO ###
+python manage.py runserver
+
+
+### CRIAR TABELAS NO BANCO DE DADOS ###
+python manage.py makemigrations
+python manage.py migrate
+
+

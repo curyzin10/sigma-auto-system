@@ -1,0 +1,31 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/cliente/cliente_delete.css' %}">
+    <title>Confirmar Exclusão</title>
+</head>
+<body>
+<div class="container">
+    <div class="confirmation-box">
+        <!-- Título e mensagem dinâmicos -->
+        <h1>Tem certeza que deseja deletar o {{ item_name }} "{{ item_value }}"?</h1>
+        <p>Esta ação é irreversível.</p>
+
+        <!-- Formulário de confirmação -->
+        <form method="POST">
+            {% csrf_token %}
+            <div class="button-group">
+                <button type="submit" class="btn confirm-btn">Confirmar</button>
+                <!-- Botão de cancelamento redireciona para a lista do tipo de item -->
+                <a href="javascript:void(0);" class="btn cancel-btn"
+                   onclick="window.location.replace('{% url cancel_url %}')">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

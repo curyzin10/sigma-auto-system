@@ -1,0 +1,42 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home_btn.css' %}">
+    <title>Vendedores</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Lista de vendedores</h1>
+       <a href="{% url 'vendedor_create' %}" class="btn">Adicionar novo vendedor</a>
+
+
+        <!-- Tabela de {{ model_name }} -->
+        <table class="clientes-table">
+            <thead>
+                <tr>
+                    <th>codigo</th>
+                    <th>nome</th>
+                    <th>Editar</th>
+                    <th>Deletar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for vendedor in vendedores %}
+                    <tr>
+                        <td>{{ vendedor.codigo }}</td>
+                        <td>{{ vendedor.nome }}</td>
+                        <td><a href="{% url 'vendedor_update' vendedor.pk %}" class="btn edit-btn">Editar</a></td>
+                        <td><a href="{% url 'vendedor_delete' vendedor.pk %}" class="btn delete-btn">Deletar</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <a href="{% url 'home' %}" class="btn back-btn">Voltar</a>
+</body>
+</html>

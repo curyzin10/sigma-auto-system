@@ -1,0 +1,207 @@
+/* Resetando o estilo básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo geral da página */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7fc;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Habilita o uso de flexbox */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    height: 100vh; /* Garante que o corpo ocupe toda a altura da tela */
+    width: 100%;
+}
+
+/* Container principal */
+.container {
+    width: 80%;
+    max-width: 1200px;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* Título da página */
+h1 {
+    color: #4CAF50;
+    margin-bottom: 30px;
+    font-size: 32px;
+    font-weight: 600;
+}
+
+/* Botão de criar novo cliente */
+.btn {
+    display: inline-block;
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.btn:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+/* Tabela de clientes */
+.clientes-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.clientes-table th, .clientes-table td {
+    padding: 14px;
+    text-align: left;
+    border: 1px solid #ddd;
+    font-size: 16px;
+}
+
+.clientes-table th {
+    background-color: #f4f4f4;
+    color: #333;
+    font-weight: bold;
+}
+
+.clientes-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.clientes-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Botões de editar e deletar */
+.edit-btn, .delete-btn {
+    padding: 8px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+    color: white;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.edit-btn {
+    background-color: #FFA500;
+}
+
+.edit-btn:hover {
+    background-color: #ff8c00;
+    transform: scale(1.05);
+}
+
+.delete-btn {
+    background-color: #f44336;
+}
+
+.delete-btn:hover {
+    background-color: #e53935;
+    transform: scale(1.05);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .clientes-table th, .clientes-table td {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .btn {
+        padding: 10px 18px;
+        font-size: 14px;
+    }
+}
+
+/* Estilo para os campos de entrada de texto */
+input, select, textarea {
+    width: 100%;
+    padding: 16px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 16px;
+    color: #333;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #4CAF50;
+    background-color: #ffffff;
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.5);
+    outline: none;
+}
+
+/* Efeito de foco nos campos de entrada */
+input:focus::placeholder, textarea:focus::placeholder {
+    color: transparent;
+}
+
+/* Estilo para os campos de texto obrigatórios (opcional) */
+input[required], select[required], textarea[required] {
+    border-color: #f44336;
+}
+
+input[required]:focus, select[required]:focus, textarea[required]:focus {
+    border-color: #f44336;
+    box-shadow: 0 0 5px rgba(244, 67, 54, 0.5);
+}
+
+/* Espaçamento entre os campos */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Dicas de erro para campos obrigatórios */
+input:invalid, select:invalid, textarea:invalid {
+    border-color: #f44336;
+}
+
+input:invalid:focus, select:invalid:focus, textarea:invalid:focus {
+    box-shadow: 0 0 5px rgba(244, 67, 54, 0.5);
+}
+
+/* Estilo para o label do campo */
+label {
+    font-weight: bold;
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* Estilo para os placeholders (dicas dentro dos campos de entrada) */
+input::placeholder, textarea::placeholder {
+    color: #888;
+    font-style: italic;
+}
+
+/* Estilo para o campo de texto em foco (destaque suave) */
+input:focus::placeholder, textarea:focus::placeholder {
+    color: transparent;  /* Oculta o placeholder enquanto o campo está em foco */
+}
