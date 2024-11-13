@@ -7,6 +7,7 @@ from django.urls import reverse
 # Listar todos os clientes
 def cliente_list(request):
     clientes = Cliente.objects.all()
+    print("Hellow World!")
     return render(request, 'cliente/cliente_list.html', {'clientes': clientes})
 
 
