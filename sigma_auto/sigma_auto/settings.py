@@ -119,15 +119,18 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-# Arquivos estáticos
-STATIC_URL = '/static/'  # Usado para CSS, JS, etc.
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]  # Opcional: diretórios de arquivos estáticos adicionais
+STATIC_URL = '/static/'
+
+# Se você deseja armazenar arquivos estáticos em um diretório diferente durante o desenvolvimento:
+STATICFILES_DIRS = [BASE_DIR / "static", ]
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = r'D:\Projetos\sigma-auto-system\sigma_auto\media'
-
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL = '/'  # Página para redirecionar após o login
+LOGIN_URL = '/login/'

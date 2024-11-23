@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponsePermanentRedirect
 from django.shortcuts import render, get_object_or_404, redirect
 
@@ -6,6 +7,7 @@ from ..models import Pedido
 
 
 # Listar todos os clientes
+@login_required  # Apenas usuários autenticados poderão acessar
 def fazer_pedido_list(request):
     pedidos = Pedido.objects.all()
     return render(request, 'operacoes/fazer_pedido.html', {'pedidos': pedidos})
@@ -27,6 +29,7 @@ def fazer_pedido_create(request):
 
 
 # Exibir o formulário para editar um cliente existente
+@login_required  # Apenas usuários autenticados poderão acessar
 def fazer_pedido_update(request, pk):
     cancel_url = 'fazer_pedido'
     pedido = get_object_or_404(Pedido, pk=pk)
@@ -43,6 +46,7 @@ def fazer_pedido_update(request, pk):
 
 
 # Deletar um cliente
+@login_required  # Apenas usuários autenticados poderão acessar
 def fazer_pedido_delete(request, pk):
     operacao_venda = get_object_or_404(Pedido, pk=pk)
 

@@ -87,10 +87,11 @@
     <main>
         <!-- Aplica a classe center-content aqui -->
         <section id="descricao" class="center-content">
-            <img src="{% static 'img/honda.png' %}" alt="Imagem BMW Série 3" style="width:100%; max-width:400px;">
+            <img src="{{ veiculo.foto.url }}" alt="Imagem BMW Série 3" style="width:100%; max-width:400px;">
             <div class="car-specs">
-                <h2 class="blue-text">BMW Série 3 2024</h2>
-                <p class="blue-text">Preço: R$ 179.990</p>
+                <h2 class="blue-text">{{ veiculo.marca }} {{ veiculo.modelo }} {{ veiculo.ano_modelo }}</h2>
+                {% load currency %}
+                <p class="blue-text">Preço: {{ veiculo.valor|currency }}</p>
             </div>
         </section>
 

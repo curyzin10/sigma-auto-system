@@ -1,12 +1,13 @@
 from django.urls import path
 from .views import model_form_view, client_view, veiculo_view, montadora_view, vendedor_view, home_view, \
-    operacoes_home_view, operacao_compra_view, operacao_venda_view, fazer_pedido_view
+    operacoes_home_view, operacao_compra_view, operacao_venda_view, fazer_pedido_view, custom_login_view
 
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('', home_view.home, name='home'),
+    path('login/', custom_login_view.CustomLoginView.as_view(), name='login'),
     path('clientes/', client_view.cliente_list, name='cliente_list'),
     path('clientes/criar/', client_view.cliente_create, name='cliente_create'),
     path('clientes/editar/<int:pk>/', client_view.cliente_update, name='cliente_update'),
@@ -55,5 +56,6 @@ urlpatterns = [
          name='model_form_edit'),
 ]
 
+# Servir arquivos de mídia durante o desenvolvimento
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

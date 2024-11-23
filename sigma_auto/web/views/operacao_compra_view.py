@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 
 from ..forms.operacao_compra_form import OperacaoDeCompraForm
@@ -5,12 +6,14 @@ from ..models import OperacaoDeCompra
 
 
 # Listar todos os clientes
+@login_required  # Apenas usuários autenticados poderão acessar
 def operacao_compra_list(request):
     operacoes_compra = OperacaoDeCompra.objects.all()
     return render(request, 'operacoes/operacao_compra.html', {'operacoes_compra': operacoes_compra})
 
 
 # Exibir o formulário para criar um novo cliente
+@login_required  # Apenas usuários autenticados poderão acessar
 def operacao_compra_create(request):
     cancel_url = 'operacao_compra'
     if request.method == 'POST':
@@ -25,6 +28,7 @@ def operacao_compra_create(request):
 
 
 # Exibir o formulário para editar um cliente existente
+@login_required  # Apenas usuários autenticados poderão acessar
 def operacao_compra_update(request, pk):
     cancel_url = 'operacao_compra'
     operacao_compra = get_object_or_404(OperacaoDeCompra, pk=pk)
@@ -41,6 +45,7 @@ def operacao_compra_update(request, pk):
 
 
 # Deletar um cliente
+@login_required  # Apenas usuários autenticados poderão acessar
 def operacao_compra_delete(request, pk):
     operacao_compra = get_object_or_404(OperacaoDeCompra, pk=pk)
 

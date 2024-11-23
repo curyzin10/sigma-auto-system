@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 
 from ..forms.montadora_form import MontadoraForm
@@ -5,12 +6,14 @@ from ..models import Montadora
 
 
 # Listar todos os clientes
+@login_required  # Apenas usuários autenticados poderão acessar
 def montadora_list(request):
     montadoras = Montadora.objects.all()
     return render(request, 'montadora/montadora_list.html', {'montadoras': montadoras})
 
 
 # Exibir o formulário para criar um novo cliente
+@login_required  # Apenas usuários autenticados poderão acessar
 def montadora_create(request):
     cancel_url = 'montadora_list'
     if request.method == 'POST':
@@ -24,6 +27,7 @@ def montadora_create(request):
 
 
 # Exibir o formulário para editar um cliente existente
+@login_required  # Apenas usuários autenticados poderão acessar
 def montadora_update(request, pk):
     cancel_url = 'montadora_list'
     montadora = get_object_or_404(Montadora, pk=pk)
@@ -39,6 +43,7 @@ def montadora_update(request, pk):
 
 
 # Deletar um cliente
+@login_required  # Apenas usuários autenticados poderão acessar
 def montadora_delete(request, pk):
     montadora = get_object_or_404(Montadora, pk=pk)
 

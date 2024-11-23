@@ -3,6 +3,7 @@ from django.forms import modelform_factory
 from django.http import Http404
 from django.apps import apps
 
+
 def model_form_view(request, model_name, pk=None):
     # Tente obter o modelo dinamicamente com base no nome
     try:

@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 from ..models import Cliente
 from ..forms.client_form import ClienteForm
@@ -5,6 +6,7 @@ from django.urls import reverse
 
 
 # Listar todos os clientes
+@login_required  # Apenas usuários autenticados poderão acessar
 def cliente_list(request):
     clientes = Cliente.objects.all()
     print("Hellow World!")
@@ -12,6 +14,7 @@ def cliente_list(request):
 
 
 # Exibir o formulário para criar um novo cliente
+@login_required  # Apenas usuários autenticados poderão acessar
 def cliente_create(request):
     cancel_url = 'cliente_list'
     if request.method == 'POST':
@@ -25,6 +28,7 @@ def cliente_create(request):
 
 
 # Exibir o formulário para editar um cliente existente
+@login_required  # Apenas usuários autenticados poderão acessar
 def cliente_update(request, pk):
     cancel_url = 'cliente_list'
     cliente = get_object_or_404(Cliente, pk=pk)
@@ -40,6 +44,7 @@ def cliente_update(request, pk):
 
 
 # Deletar um cliente
+@login_required  # Apenas usuários autenticados poderão acessar
 def cliente_delete(request, pk):
     cliente = get_object_or_404(Cliente, pk=pk)
 

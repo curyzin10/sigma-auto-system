@@ -1,11 +1,12 @@
-from django.http import HttpResponsePermanentRedirect
 from django.shortcuts import render, get_object_or_404, redirect
-
+from django.contrib.auth.decorators import login_required
 from ..forms.operaca_venda_form import OperacaoDeVendaForm
 from ..models import OperacaoDeVenda
 
 
 # Listar todos os clientes
+
+@login_required  # Apenas usuários autenticados poderão acessar
 def operacao_venda_list(request):
     operacoes_venda = OperacaoDeVenda.objects.all()
     print(operacoes_venda)
@@ -14,13 +15,14 @@ def operacao_venda_list(request):
 
 
 # Exibir o formulário para criar um novo cliente
+@login_required  # Apenas usuários autenticados poderão acessar
 def operacao_venda_create(request):
     cancel_url = 'operacao_venda'
     if request.method == 'POST':
         form = OperacaoDeVendaForm(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponsePermanentRedirect('operacao_venda')
+            return redirect('operacao_venda')
 
     else:
         form = OperacaoDeVendaForm()
@@ -29,6 +31,7 @@ def operacao_venda_create(request):
 
 
 # Exibir o formulário para editar um cliente existente
+@login_required  # Apenas usuários autenticados poderão acessar
 def operacao_venda_update(request, pk):
     cancel_url = 'operacao_venda'
     operacao_venda = get_object_or_404(OperacaoDeVenda, pk=pk)
@@ -45,6 +48,7 @@ def operacao_venda_update(request, pk):
 
 
 # Deletar um cliente
+@login_required  # Apenas usuários autenticados poderão acessar
 def operacao_venda_delete(request, pk):
     operacao_venda = get_object_or_404(OperacaoDeVenda, pk=pk)
 

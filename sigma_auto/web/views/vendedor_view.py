@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 
 from ..forms.vendedor_form import VendedorForm
@@ -5,12 +6,14 @@ from ..models import Vendedor
 
 
 # Listar todos os clientes
+@login_required  # Apenas usuários autenticados poderão acessar
 def vendedor_list(request):
     vendedores = Vendedor.objects.all()
     return render(request, 'vendedor/vendedor_list.html', {'vendedores': vendedores, 'model_name': 'vendedores'})
 
 
 # Exibir o formulário para criar um novo cliente
+@login_required  # Apenas usuários autenticados poderão acessar
 def vendedor_create(request):
     cancel_url = 'vendedor_list'
     if request.method == 'POST':
@@ -26,6 +29,7 @@ def vendedor_create(request):
 
 
 # Exibir o formulário para editar um cliente existente
+@login_required  # Apenas usuários autenticados poderão acessar
 def vendedor_update(request, pk):
     cancel_url = 'vendedor_list'
     vendedor = get_object_or_404(Vendedor, pk=pk)
@@ -41,6 +45,7 @@ def vendedor_update(request, pk):
 
 
 # Deletar um cliente
+@login_required  # Apenas usuários autenticados poderão acessar
 def vendedor_delete(request, pk):
     vendedor = get_object_or_404(Vendedor, pk=pk)
 

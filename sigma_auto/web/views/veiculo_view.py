@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 
 from ..forms.veiculo_form import VeiculoForm
@@ -5,6 +6,7 @@ from ..models import Veiculo
 
 
 # Listar todos os clientes
+@login_required  # Apenas usuários autenticados poderão acessar
 def veiculo_list(request):
     # Ordenar os veículos por marca e modelo
     veiculos = Veiculo.objects.order_by('marca', 'modelo')
@@ -12,6 +14,7 @@ def veiculo_list(request):
 
 
 # Exibir o formulário para criar um novo cliente
+@login_required  # Apenas usuários autenticados poderão acessar
 def veiculo_create(request):
     cancel_url = 'veiculo_page'
     if request.method == 'POST':
@@ -27,6 +30,7 @@ def veiculo_create(request):
 
 
 # Exibir o formulário para editar um cliente existente
+@login_required  # Apenas usuários autenticados poderão acessar
 def veiculo_update(request, pk):
     cancel_url = 'veiculo_page'
     veiculo = get_object_or_404(Veiculo, pk=pk)
@@ -42,6 +46,7 @@ def veiculo_update(request, pk):
 
 
 # Deletar um cliente
+@login_required  # Apenas usuários autenticados poderão acessar
 def veiculo_delete(request, pk):
     veiculo = get_object_or_404(Veiculo, pk=pk)
 
@@ -60,7 +65,7 @@ def veiculo_delete(request, pk):
         'cancel_url': cancel_url,
     })
 
-
+@login_required  # Apenas usuários autenticados poderão acessar
 def veiculo_detalhes(request, pk):
     veiculo = get_object_or_404(Veiculo, pk=pk)
     return render(request, 'veiculo/veiculo_detalhes.html', {'veiculo': veiculo})
