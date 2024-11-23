@@ -16,7 +16,7 @@
     <h1>{% if form.instance.pk %}Editar{% else %}Criar Novo{% endif %} {{ model_name }}</h1>
 
     <!-- Form -->
-    <form id="veiculoForm" method="POST">
+    <form id="veiculoForm" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="form-group">
             {{ form.as_p }} <!-- Renders form fields -->

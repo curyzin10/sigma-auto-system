@@ -1,7 +1,7 @@
 {% load static %}
 <!-- templates/_veiculo_card.html -->
 <div class="veiculo-card">
-    <img src="{% static 'img/honda.png' %}" class="card-img-top" alt="{{ veiculo.modelo }}">
+    <img src="media/{{ veiculo.foto }}" class="card-img-top"  alt="Honda">
     <div class="card-body">
         <h5 class="card-title">{{ veiculo.marca }} {{ veiculo.modelo }}</h5>
         {% load currency %}

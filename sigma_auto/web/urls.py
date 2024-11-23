@@ -2,6 +2,9 @@ from django.urls import path
 from .views import model_form_view, client_view, veiculo_view, montadora_view, vendedor_view, home_view, \
     operacoes_home_view, operacao_compra_view, operacao_venda_view, fazer_pedido_view
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     path('', home_view.home, name='home'),
     path('clientes/', client_view.cliente_list, name='cliente_list'),
@@ -25,14 +28,16 @@ urlpatterns = [
     path('operacoes/', operacoes_home_view.operacoes_page, name='operacoes_page'),
 
     path('operacoes/compra', operacao_compra_view.operacao_compra_list, name='operacao_compra'),
-    path('operacoes/compra/criar/', operacao_compra_view.operacao_compra_create, name='operacao_compra_create'),
+    path('operacoes/compra/criar/', operacao_compra_view.operacao_compra_create,
+         name='operacao_compra_create'),
     path('operacoes/compra/editar/<int:pk>/', operacao_compra_view.operacao_compra_update,
          name='operacao_compra_update'),
     path('operacoes/compra/deletar/<int:pk>/', operacao_compra_view.operacao_compra_delete,
          name='operacao_compra_delete'),
 
     path('operacoes/venda', operacao_venda_view.operacao_venda_list, name='operacao_venda'),
-    path('operacoes/venda/criar/', operacao_venda_view.operacao_venda_create, name='operacao_venda_create'),
+    path('operacoes/venda/criar/', operacao_venda_view.operacao_venda_create,
+         name='operacao_venda_create'),
     path('operacoes/venda/editar/<int:pk>/', operacao_venda_view.operacao_venda_update,
          name='operacao_venda_update'),
     path('operacoes/venda/deletar/<int:pk>/', operacao_venda_view.operacao_venda_delete,
@@ -46,5 +51,9 @@ urlpatterns = [
          name='fazer_pedido_delete'),
 
     path('formulario/<str:model_name>/', model_form_view.model_form_view, name='model_form'),
-    path('formulario/<str:model_name>/<int:pk>/', model_form_view.model_form_view, name='model_form_edit'),
+    path('formulario/<str:model_name>/<int:pk>/', model_form_view.model_form_view,
+         name='model_form_edit'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

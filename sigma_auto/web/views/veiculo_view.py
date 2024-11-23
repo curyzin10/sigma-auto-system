@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from ..models import Veiculo
+
 from ..forms.veiculo_form import VeiculoForm
-from django.urls import reverse
+from ..models import Veiculo
 
 
 # Listar todos os clientes
@@ -16,10 +16,10 @@ def veiculo_create(request):
     cancel_url = 'veiculo_page'
     if request.method == 'POST':
 
-        form = VeiculoForm(request.POST)
+        form = VeiculoForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('veiculo_page')  # Redireciona para a lista de clientes
+            return redirect('veiculo_page')
     else:
         form = VeiculoForm()
     return render(request, 'generic_form.html', {'form': form, 'action': 'create',
