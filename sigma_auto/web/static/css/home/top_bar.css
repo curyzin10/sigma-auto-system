@@ -1,0 +1,130 @@
+/* Global Reset */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+/* Header Styles */
+header {
+    background: linear-gradient(135deg, #1d3557, #457b9d);
+    color: #fff;
+    padding: 20px 0;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.header-content nav {
+    display: flex;
+    gap: 20px;
+}
+
+.header-content nav a {
+    text-decoration: None;
+    color: #fff;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.header-content nav a:hover {
+    text-decoration: None;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #f1faee;
+    transform: scale(1.1);
+}
+
+/* Estilos para o logo */
+.center-content {
+    text-align: center;
+    transition: transform 0.3s ease; /* Transição para animação de hover */
+}
+
+.center-content img {
+    max-width: 150px;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease; /* Transição suave */
+}
+
+/* Efeito de animação para a logo ao passar o mouse */
+.center-content:hover img {
+    transform: scale(1.1); /* Aumenta a escala da logo */
+    filter: brightness(1.2); /* Aumenta o brilho da imagem */
+}
+
+/* Remover o underline do título e garantir que a cor seja branca */
+.center-content h1 {
+    text-decoration: None;
+    font-size: 1.8rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #fff; /* Cor branca para o título */
+    transition: color 0.3s ease;
+}
+
+a {
+    text-decoration: none;
+}
+
+.center-content:hover h1 {
+text-decoration: None;
+    color: #f1faee; /* Muda a cor do título ao passar o mouse */
+}
+
+/* Responsiveness */
+@media screen and (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .header-content nav {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .center-content h1 {
+        font-size: 1.5rem;
+    }
+
+    .center-content img {
+        max-width: 50px;
+    }
+}
+
+.logout-btn {
+    padding: 10px 15px;
+    background-color: #f44336; /* Cor de fundo vermelha */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.logout-btn:hover {
+    background-color: #d32f2f; /* Cor vermelha mais escura ao passar o mouse */
+}
+

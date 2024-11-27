@@ -1,101 +1,92 @@
-/* Estilo aprimorado para o card de veículo */
+/* Card de Veículo */
 .veiculo-card {
-    max-width: 320px;
-    margin: 15px;
-    border-radius: 12px;
-    overflow: hidden;
     background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-    border: 1px solid #e0e0e0;
 }
 
 .veiculo-card:hover {
-    transform: translateY(-12px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-    border-color: #4CAF50;
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Imagem do card */
-.card-img-top {
+/* Imagem do Card */
+.veiculo-card .card-img-top {
     width: 100%;
-    height: 220px;
-    object-fit: contain; /* Ajuste para mostrar a imagem completa */
-    transition: transform 0.3s ease;
+    height: auto;
+    object-fit: cover;
+    border-bottom: 2px solid #f1f1f1;
 }
 
-.veiculo-card:hover .card-img-top {
-    transform: scale(1.05);
-}
-
-/* Corpo do card */
-.card-body {
-    padding: 25px;
-    text-align: center;
-}
-
-/* Título do card */
-.card-title {
-    font-size: 20px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 12px;
-    transition: color 0.3s ease;
-}
-
-.veiculo-card:hover .card-title {
-    color: #4CAF50;
-}
-
-/* Preço do card */
-.card-price {
-    font-size: 18px;
-    color: #388E3C;
-    font-weight: bold;
-    margin-bottom: 12px;
-    position: relative;
-    padding-bottom: 4px;
-    transition: color 0.3s ease;
-}
-
-.veiculo-card:hover .card-price {
-    color: #2E7D32;
-}
-
-.card-price:after {
-    content: "";
-    display: block;
-    width: 0;
-    height: 3px;
-    background: #4CAF50;
-    transition: width 0.3s;
-    margin: auto;
-}
-
-.veiculo-card:hover .card-price:after {
-    width: 50%;
-}
-
-/* Detalhes do card */
-.card-details {
-    font-size: 15px;
-    color: #555;
-    margin-bottom: 20px;
-    line-height: 1.4;
-}
-
-/* Lista de cards - estilização adicional para layout */
-.veiculos-lista {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
+/* Corpo do Card */
+.veiculo-card .card-body {
     padding: 20px;
-    background-color: #f8f9fa;
 }
 
-/* Estilo sutil de efeito de transição */
-.veiculo-card, .card-img-top, .card-title, .card-price, .card-details {
-    transition: all 0.3s ease;
+.veiculo-card .card-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.veiculo-card .card-price {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #1d3557;
+    margin-bottom: 10px;
+}
+
+.veiculo-card .card-details {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.veiculo-card .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 500;
+    background-color: #457b9d;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    text-decoration: none;
+}
+
+.veiculo-card .btn:hover {
+    background-color: #1d3557;
+}
+
+/* Responsividade */
+@media screen and (max-width: 768px) {
+    .veiculo-card {
+        margin: 10px;
+    }
+
+    .veiculo-card .card-body {
+        padding: 15px;
+    }
+
+    .veiculo-card .card-title {
+        font-size: 1.2rem;
+    }
+
+    .veiculo-card .card-price {
+        font-size: 1.1rem;
+    }
+
+    .veiculo-card .card-details {
+        font-size: 0.9rem;
+    }
+
+    .veiculo-card .btn {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+    }
 }

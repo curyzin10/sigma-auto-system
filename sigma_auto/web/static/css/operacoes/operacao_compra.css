@@ -1,0 +1,157 @@
+/* Resetando alguns estilos para garantir consistência */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo global do body */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f8fa;
+    color: #333;
+}
+
+/* Estilo do título principal */
+h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-top: 20px;
+    color: #333;
+}
+
+/* Container que engloba todo o conteúdo */
+.container {
+    width: 80%;
+    margin: 30px auto;
+}
+
+/* Estilo do botão para registrar nova compra */
+.new-operation-button {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.new-operation-button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo da lista de operações */
+.operation-list {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.operation-list h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+/* Estilo de cada item de operação */
+.operation-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.operation-item:last-child {
+    border-bottom: none;
+}
+
+.operation-info {
+    flex: 1;
+    font-size: 1rem;
+    color: #555;
+}
+
+.operation-buttons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.edit-button,
+.delete-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.edit-button {
+    background-color: #28a745;
+    color: white;
+}
+
+.delete-button {
+    background-color: #dc3545;
+    color: white;
+}
+
+.edit-button:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+.delete-button:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
+}
+
+/* Estilo do botão de voltar */
+.back-btn {
+    display: inline-block;
+    background-color: #6c757d;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1rem;
+    margin-top: 20px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.back-btn:hover {
+    background-color: #5a6268;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+
+    .operation-item {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .operation-info {
+        font-size: 1.1rem;
+    }
+
+    .operation-buttons {
+        justify-content: flex-start;
+    }
+
+    .edit-button,
+    .delete-button {
+        font-size: 1.1rem;
+        padding: 8px 15px;
+    }
+}

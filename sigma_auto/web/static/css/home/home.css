@@ -1,466 +1,205 @@
-/* Definindo variáveis para facilitar manutenções futuras */
-:root {
-    --primary-color: #4CAF50;
-    --primary-color-hover: #45a049;
-    --secondary-color: #333;
-    --tertiary-color: #f4f4f4;
-    --text-color: #555;
-    --background-color: #f8f9fa;
-    --footer-background: #333;
-    --button-hover: #66BB6A;
-    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Estilos gerais */
-body {
-    font-family: Arial, sans-serif;
-    background-color: var(--tertiary-color);
+/* Resetando alguns estilos padrão para garantir consistência */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-header {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 30px 0;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+/* Estilo geral do body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
 }
 
-header .container {
+/* Estilo do Banner */
+#banner {
+    position: relative;
+    width: 50%;
+    height: 1vh; /* Banner ocupa 80% da altura da tela */
+    background-image: url('{% static "images/background.jpg" %}');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    padding: 0 15px;
-}
-
-header h1 {
-    font-size: 24px;
-    margin: 0;
-}
-
-header nav a {
     color: white;
-    margin: 0 15px;
-    text-decoration: none;
+    text-align: center;
+    padding: 20px;
+}
+
+#banner .banner-content {
+    z-index: 1;
+    padding: 20px;
+    max-width: 50%;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+#banner h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
     font-weight: bold;
-    transition: text-decoration 0.3s ease;
 }
 
-header nav a:hover {
-    text-decoration: underline;
-}
-
-/* Estilos do container principal */
-main {
-    padding: 40px 0;
-}
-
+/* Estilos do Container principal */
 .container {
     width: 90%;
-    margin: 0 auto;
+    max-width: 1200px;
+    margin: 30px auto;
 }
 
-/* Estilos para a listagem de veículos */
+/* Estilo da seção de veículos */
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
 .card-deck {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: 20px;
-    justify-items: center;
+    justify-content: center;
 }
 
-.btn-primary {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-}
-
-.btn-primary:hover {
-    background-color: var(--primary-color-hover);
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-    header .container {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    header h1 {
-        margin-bottom: 10px;
-    }
-
-    header nav {
-        margin-top: 10px;
-    }
-
-    .card-deck {
-        grid-template-columns: 1fr 1fr;
-    }
-}
-
-@media (max-width: 480px) {
-    .card-deck {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* Seção de Localização */
-#localizacao {
-    padding: 40px 20px;
-    background-color: var(--background-color);
-    text-align: center;
-}
-
-#localizacao h2 {
-    font-size: 28px;
-    color: var(--secondary-color);
-    margin-bottom: 15px;
-    font-weight: bold;
-}
-
-#localizacao p {
-    font-size: 18px;
-    color: #555;
-    margin-bottom: 20px;
-}
-
-#localizacao address {
-    font-size: 16px;
-    color: #666;
-    font-style: normal;
-    line-height: 1.6;
-    margin-bottom: 25px;
-}
-
-/* Estilização do Mapa Incorporado */
-#localizacao iframe {
-    width: 100%;
-    max-width: 600px;
-    height: 450px;
-    border: none;
-    border-radius: 8px;
-    box-shadow: var(--box-shadow);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-#localizacao iframe:hover {
-    transform: scale(1.02);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-}
-
-/* Rodapé */
-footer {
-    padding: 20px;
-    background-color: var(--footer-background);
-    color: white;
-    text-align: center;
-    font-size: 16px;
-    margin-top: 40px;
-}
-
-footer p {
-    margin: 0;
-}
-
-footer p a {
-    color: var(--primary-color);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-footer p a:hover {
-    color: var(--button-hover);
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-    #localizacao {
-        padding: 30px 10px;
-    }
-
-    #localizacao h2 {
-        font-size: 24px;
-    }
-
-    #localizacao p,
-    #localizacao address {
-        font-size: 15px;
-    }
-}
-
-/* Seção de Contato */
-#contato {
-    padding: 50px 20px;
-    background-color: #f4f7f6;
-    text-align: center;
-}
-
-#contato h2 {
-    font-size: 32px;
-    color: var(--secondary-color);
-    margin-bottom: 20px;
-    font-weight: bold;
-}
-
-#contato p {
-    font-size: 18px;
-    color: var(--text-color);
-    margin-bottom: 30px;
-    max-width: 1500px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* Estilo do formulário */
-form {
-    max-width: 700px;
-    margin: 0 auto;
+.card-deck .card {
     background-color: white;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: var(--box-shadow);
-}
-
-/* Estilo dos campos de entrada */
-input[type="text"],
-input[type="email"],
-textarea {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
     border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: 16px;
-    transition: border-color 0.3s ease;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 300px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
 }
 
-input[type="text"]:focus,
-input[type="email"]:focus,
-textarea:focus {
-    border-color: var(--primary-color);
-    outline: none;
+.card-deck .card:hover {
+    transform: translateY(-10px);
 }
 
-textarea {
-    height: 150px;
-    resize: vertical;
-}
-
-/* Estilo do botão */
-button[type="submit"] {
+.card-deck .card img {
     width: 100%;
-    padding: 12px;
-    background-color: var(--primary-color);
-    color: white;
-    font-size: 18px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    height: 200px;
+    object-fit: cover;
 }
 
-button[type="submit"]:hover {
-    background-color: var(--primary-color-hover);
+.card-deck .card-body {
+    padding: 15px;
 }
 
-button[type="submit"]:active {
-    background-color: #3e8e41;
+.card-deck .card-body h5 {
+    font-size: 1.6rem;
+    margin-bottom: 10px;
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
-    #contato h2 {
-        font-size: 28px;
-    }
-
-    #contato p {
-        font-size: 16px;
-    }
-
-    form {
-        padding: 20px;
-    }
-
-    input[type="text"],
-    input[type="email"],
-    textarea {
-        font-size: 14px;
-    }
-
-    button[type="submit"] {
-        font-size: 16px;
-    }
-}
-
-
-/* Seção de Localização */
-#localizacao {
-    padding: 60px 20px; /* Aumentando o padding para mais espaçamento */
-    background-color: #f8f9fa;
-    text-align: center;
-}
-
-#localizacao h2 {
-    font-size: 32px; /* Aumentando o tamanho do título */
-    color: #333;
-    margin-bottom: 20px;
-    font-weight: bold;
-}
-
-#localizacao p {
-    font-size: 20px; /* Aumentando o tamanho da descrição */
+.card-deck .card-body p {
+    font-size: 1.2rem;
     color: #555;
-    margin-bottom: 25px;
 }
 
-#localizacao address {
-    font-size: 18px; /* Aumentando o tamanho do texto do endereço */
-    color: #666;
-    font-style: normal;
-    line-height: 1.8;
-    margin-bottom: 30px;
-}
-
-/* Estilização do Mapa Incorporado */
-#localizacao iframe {
-    width: 100%;
-    max-width: 800px; /* Aumentando a largura máxima */
-    height: 500px; /* Aumentando a altura do mapa */
-    border: none;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-#localizacao iframe:hover {
-    transform: scale(1.05); /* Aumentando um pouco o efeito de hover */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-}
-
-/* Seção de Contato */
+/* Estilo da seção de contato */
 #contato {
-    padding: 60px 20px; /* Aumentando o padding para mais espaçamento */
-    background-color: #f4f7f6;
-    text-align: center;
+    background-color: #fff;
+    padding: 40px 20px;
+    margin-top: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 #contato h2 {
-    font-size: 36px; /* Aumentando o tamanho do título */
-    color: #333;
-    margin-bottom: 20px;
-    font-weight: bold;
+    font-size: 2rem;
+    margin-bottom: 15px;
+    text-align: center;
 }
 
 #contato p {
-    font-size: 20px; /* Aumentando o tamanho do texto */
-    color: #555;
-    margin-bottom: 30px;
-    max-width: 1600px; /* Aumentando a largura máxima do texto */
-    margin-left: auto;
-    margin-right: auto;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-/* Estilo do formulário */
-form {
-    max-width: 800px; /* Aumentando a largura máxima do formulário */
+#contato form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 600px;
     margin: 0 auto;
-    background-color: #fff;
-    padding: 40px; /* Aumentando o padding para mais espaçamento interno */
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilo dos campos de entrada */
-input[type="text"],
-input[type="email"],
-textarea {
-    width: 100%;
-    padding: 14px; /* Aumentando o padding */
-    margin: 12px 0; /* Aumentando a margem */
+#contato input,
+#contato textarea {
+    padding: 12px;
+    font-size: 1rem;
     border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: 18px; /* Aumentando o tamanho da fonte */
-    transition: border-color 0.3s ease;
+    border-radius: 5px;
 }
 
-input[type="text"]:focus,
-input[type="email"]:focus,
-textarea:focus {
-    border-color: #4CAF50;
-    outline: none;
-}
-
-textarea {
-    height: 200px; /* Aumentando a altura do campo de texto */
+#contato textarea {
     resize: vertical;
+    min-height: 150px;
 }
 
-/* Estilo do botão */
-button[type="submit"] {
-    width: 100%;
-    padding: 14px;
-    background-color: #4CAF50;
-    color: #fff;
-    font-size: 20px; /* Aumentando o tamanho da fonte */
+#contato button {
+    padding: 15px;
+    font-size: 1.2rem;
+    background-color: #007bff;
+    color: white;
     border: none;
-    border-radius: 6px;
+    border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-button[type="submit"]:hover {
-    background-color: #45a049;
+#contato button:hover {
+    background-color: #0056b3;
 }
 
-button[type="submit"]:active {
-    background-color: #3e8e41;
+/* Estilo da seção de localização */
+#localizacao {
+    background-color: #fff;
+    padding: 40px 20px;
+    margin-top: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Responsividade */
+#localizacao h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+#localizacao p {
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#localizacao address {
+    font-style: normal;
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+#localizacao iframe {
+    width: 100%;
+    max-width: 800px;
+    height: 400px;
+    border: 0;
+    margin: 0 auto;
+    display: block;
+}
+
+/* Responsividade para dispositivos móveis */
 @media (max-width: 768px) {
-    #localizacao {
-        padding: 50px 15px;
-    }
-
-    #localizacao h2 {
-        font-size: 28px;
-    }
-
-    #localizacao p,
-    #localizacao address {
-        font-size: 18px;
-    }
-
-    #contato h2 {
-        font-size: 32px;
-    }
-
-    #contato p {
-        font-size: 18px;
-    }
-
-    form {
-        padding: 25px;
-    }
-
-    input[type="text"],
-    input[type="email"],
-    textarea {
-        font-size: 16px;
-    }
-
-    button[type="submit"] {
-        font-size: 18px;
-    }
-}
-
-@media (max-width: 480px) {
     #localizacao iframe {
-        height: 400px; /* Ajustando a altura do mapa para dispositivos menores */
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .card-deck {
+        flex-direction: column;
+        align-items: center;
     }
 }

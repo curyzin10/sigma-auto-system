@@ -1,19 +1,15 @@
+{% extends "base.html" %}
 {% load static %}
+{% block title %}Veículos - Rede Sigma{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/form/form.css' %}">
 
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'css/home_btn.css' %}">
-    <title>Lista de {{ model_name }}</title>
-</head>
+{% endblock %}
+{% block content %}
 <body>
     <div class="container">
-        <h1>Lista de {{ model_name }}</h1>
+        <h1>Clientes</h1>
        <a href="{% url 'cliente_create' %}" class="btn">Criar Novo {{ model_name }}</a>
-
 
         <!-- Tabela de {{ model_name }} -->
         <table class="clientes-table">
@@ -41,6 +37,5 @@
             </tbody>
         </table>
     </div>
-    <a href="{% url 'home' %}" class="btn back-btn">Voltar</a>
 </body>
-</html>
+{% endblock %}

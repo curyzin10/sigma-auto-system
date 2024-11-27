@@ -105,3 +105,21 @@ class OperacaoDeCompra(models.Model):
 
     def __str__(self):
         return f'Operação de Compra {self.id_operacao_compra}'
+
+
+class Contato(models.Model):
+    nome = models.CharField(max_length=255)
+    email = models.EmailField(max_length=255)
+    telefone = models.CharField(max_length=20)  # Pode ajustar o comprimento conforme o formato do telefone
+    mensagem = models.TextField()
+
+    # Data de criação do contato
+    data_criacao = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'Contato de {self.nome} - {self.email}'
+
+    class Meta:
+        verbose_name = 'Contato'
+        verbose_name_plural = 'Contatos'
+        ordering = ['-data_criacao']

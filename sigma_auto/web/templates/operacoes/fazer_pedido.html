@@ -1,86 +1,10 @@
+{% extends "base.html" %}
 {% load static %}
-
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Operação de pedidos - Listagem</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 20px;
-        }
-        h1 {
-            color: #333;
-            text-align: center;
-        }
-        .container {
-            max-width: 800px;
-            margin: auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        .new-operation-button {
-            display: inline-block;
-            background-color: #007bff;
-            color: #fff;
-            padding: 10px 15px;
-            border-radius: 4px;
-            text-decoration: none;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .new-operation-button:hover {
-            background-color: #0056b3;
-        }
-        .operation-list {
-            margin-top: 20px;
-        }
-        .operation-item {
-            padding: 15px;
-            border-bottom: 1px solid #ddd;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .operation-info {
-            flex-grow: 1;
-        }
-        .operation-info strong {
-            color: #333;
-        }
-        .operation-buttons {
-            display: flex;
-            gap: 10px;
-        }
-        .edit-button, .delete-button {
-            padding: 8px 12px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .edit-button {
-            background-color: #28a745;
-            color: #fff;
-        }
-        .edit-button:hover {
-            background-color: #218838;
-        }
-        .delete-button {
-            background-color: #dc3545;
-            color: #fff;
-        }
-        .delete-button:hover {
-            background-color: #c82333;
-        }
-    </style>
-    <link rel="stylesheet" href="{% static 'css/home_btn.css' %}">
-</head>
+{% block title %}Veículos - Rede Sigma{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/operacoes/operacao_compra.css' %}">
+{% endblock %}
+{% block content %}
 <body>
 <h1>Pedidos</h1>
 <div class="container">
@@ -118,4 +42,4 @@
     <a href="{% url 'operacoes_page' %}" class="btn back-btn">Voltar</a>
 </div>
 </body>
-</html>
+{% endblock %}

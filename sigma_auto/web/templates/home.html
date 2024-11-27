@@ -1,46 +1,29 @@
+{% extends "base.html" %}
 {% load static %}
+{% block title %}Veículos - Rede Sigma{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/veiculo/home_veiculo.css' %}">
+  <link rel="stylesheet" href="{% static 'css/veiculo/card_veiculo.css' %}">
+{% endblock %}
+{% block content %}
 
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rede Sigma - Sistema de Controle</title>
-    <link rel="stylesheet" href="{% static 'css/home/home.css' %}">
-    <link rel="stylesheet" href="{% static 'css/veiculo/card_veiculo.css' %}">
-</head>
-<body>
-<header>
     <div class="container">
-        <h1>Rede Sigma - Sistema de Controle de Veículos</h1>
-        <nav>
-            <a href="{% url 'veiculo_page' %}">Veículos</a>
-            <a href="{% url 'cliente_list' %}">Clientes</a>
-            <a href="{% url 'vendedor_list' %}">Vendedores</a>
-            <a href="{% url 'montadora_list' %}">Montadoras</a>
-            <a href="{% url 'operacoes_page' %}">Operações</a>
-        </nav>
-    </div>
-</header>
-
-<main>
-    <div class="container">
-        <h2>Veículos dísponiveis</h2>
+        <h2>Veículos Disponíveis</h2>
         <div class="card-deck">
             {% for veiculo in veiculos %}
-            {% include "veiculo/card_veiculo.html" %}
+                {% include "veiculo/card_veiculo.html" %}
             {% empty %}
-            <p>Nenhum veículo encontrado.</p>
+                <p>Nenhum veículo encontrado.</p>
             {% endfor %}
         </div>
     </div>
-</main>
 
-<!-- Seção de Contato -->
+    <!-- Seção de Contato -->
 <section id="contato">
     <h2>Contato</h2>
     <p>Entre em contato com a equipe da Rede Sigma para dúvidas, sugestões ou suporte.</p>
-    <form action="send_contact.php" method="POST">
+    <form action="{% url 'contato' %}" method="POST">
+        {% csrf_token %}
         <input type="text" name="nome" placeholder="Seu Nome" required>
         <input type="email" name="email" placeholder="Seu Email" required>
         <input type="text" name="telefone" placeholder="Seu Telefone" required>
@@ -49,23 +32,18 @@
     </form>
 </section>
 
-<!-- Seção de Localização -->
-<section id="localizacao">
-    <h2>Localização da Empresa</h2>
-    <p>Nosso escritório está localizado em:</p>
-    <address>
-        Rua Exemplo, 123<br>
-        Bairro Central<br>
-        Cidade - Estado, CEP 00000-000
-    </address>
-    <!-- Mapa incorporado -->
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.8355484509273!2d-122.0854196846811!3d37.42199937982685!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb5a1e26c9d03%3A0x6e92e4c37d6b8d79!2sGoogleplex!5e0!3m2!1sen!2sbr!4v1615152322068!5m2!1sen!2sbr"
-            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-</section>
 
-</body>
-
-<footer class="text-center mt-5">
-    <p>&copy; 2024 Rede Sigma - Todos os direitos reservados.</p>
-</footer>
-</html>
+    <!-- Seção de Localização -->
+    <section id="localizacao">
+        <h2>Localização da Empresa</h2>
+        <p>Nosso escritório está localizado em:</p>
+        <address>
+            Rua Exemplo, 123<br>
+            Bairro Central<br>
+            Cidade - Estado, CEP 00000-000
+        </address>
+        <!-- Mapa incorporado -->
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.8355484509273!2d-122.0854196846811!3d37.42199937982685!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb5a1e26c9d03%3A0x6e92e4c37d6b8d79!2sGoogleplex!5e0!3m2!1sen!2sbr!4v1615152322068!5m2!1sen!2sbr"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </section>
+{% endblock %}

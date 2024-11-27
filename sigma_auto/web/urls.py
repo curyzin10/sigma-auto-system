@@ -1,6 +1,7 @@
+from django.contrib.auth.views import LogoutView
 from django.urls import path
 from .views import model_form_view, client_view, veiculo_view, montadora_view, vendedor_view, home_view, \
-    operacoes_home_view, operacao_compra_view, operacao_venda_view, fazer_pedido_view, custom_login_view
+    operacoes_home_view, operacao_compra_view, operacao_venda_view, fazer_pedido_view, custom_login_view, contato_view
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -54,6 +55,9 @@ urlpatterns = [
     path('formulario/<str:model_name>/', model_form_view.model_form_view, name='model_form'),
     path('formulario/<str:model_name>/<int:pk>/', model_form_view.model_form_view,
          name='model_form_edit'),
+    path('contato/', contato_view.contato_view, name='contato'),  # URL para a página de contato
+    path('contato/enviado/', contato_view.contato_enviado_view, name='contato_enviado'),  # Página
+    path('logout/', LogoutView.as_view(), name='logout'),
 ]
 
 # Servir arquivos de mídia durante o desenvolvimento

@@ -48,15 +48,15 @@ def fazer_pedido_update(request, pk):
 # Deletar um cliente
 @login_required  # Apenas usuários autenticados poderão acessar
 def fazer_pedido_delete(request, pk):
-    operacao_venda = get_object_or_404(Pedido, pk=pk)
+    pedido = get_object_or_404(Pedido, pk=pk)
 
     # Definir parâmetros dinâmicos
     item_name = 'fazer_pedido'
-    item_value = operacao_venda.numero
+    item_value = pedido.cliente.nome
     cancel_url = 'fazer_pedido'  # URL para voltar à lista de clientes
 
     if request.method == 'POST':
-        operacao_venda.delete()
+        pedido.delete()
         return redirect('fazer_pedido')  # Redirecionar para a lista de clientes
 
     return render(request, 'confirm_delete.html', {

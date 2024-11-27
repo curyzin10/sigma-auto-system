@@ -1,0 +1,165 @@
+/* Estilos Gerais */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container centralizado */
+.center-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+/* Seção de Descrição */
+#descricao {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+#descricao img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.car-specs {
+    margin-top: 20px;
+}
+
+.car-specs h2 {
+    font-size: 2rem;
+    color: #1d3557;
+    margin: 10px 0;
+}
+
+.car-specs p {
+    font-size: 1.2rem;
+    color: #457b9d;
+    margin: 10px 0;
+}
+
+/* Seção de Características */
+#caracteristicas {
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 40px;
+    text-align: left;
+}
+
+#caracteristicas h3 {
+    font-size: 1.8rem;
+    color: #1d3557;
+    margin-bottom: 15px;
+}
+
+#caracteristicas ul {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+#caracteristicas ul li {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+/* Descrição do veículo */
+#caracteristicas p {
+    font-size: 1.1rem;
+    color: #333;
+}
+
+/* Seção de Especificações Técnicas */
+#especificacoes {
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 40px;
+    text-align: left;
+}
+
+#especificacoes h3 {
+    font-size: 1.8rem;
+    color: #1d3557;
+    margin-bottom: 15px;
+}
+
+#especificacoes table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#especificacoes th, #especificacoes td {
+    padding: 12px;
+    text-align: left;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+#especificacoes th {
+    background-color: #457b9d;
+    color: #fff;
+    width: 200px;
+}
+
+#especificacoes td {
+    background-color: #f9f9f9;
+}
+
+#especificacoes tr:nth-child(even) td {
+    background-color: #f1f1f1;
+}
+
+/* Botão de Voltar */
+.btn-custom {
+    background-color: #457b9d;
+    color: white;
+    padding: 12px 24px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    border: none;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn-custom:hover {
+    background-color: #1d3557;
+}
+
+.btn-custom:focus {
+    outline: none;
+}
+
+/* Responsividade */
+@media screen and (max-width: 768px) {
+    #descricao {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    #caracteristicas ul li, #especificacoes td {
+        font-size: 1rem;
+    }
+
+    #caracteristicas p, #especificacoes th, #especificacoes td {
+        font-size: 1rem;
+    }
+
+    .btn-custom {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+}

@@ -1,0 +1,42 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Rede Sigma{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/home/top_bar.css' %}">
+    {% block extra_css %}{% endblock %}
+<body>
+<header>
+    <div class="container header-container">
+        <!-- Logo -->
+
+        <!-- Título e Navegação -->
+        <div class="header-content">
+            <nav>
+                <a href="{% url 'veiculo_page' %}">Veículos</a>
+                <a href="{% url 'cliente_list' %}">Clientes</a>
+            </nav>
+            <div class="center-content">
+                <a href="{% url 'home' %}">
+                    <img src="{% static 'images/logo.png' %}" alt="Logo Rede Sigma">
+                    <h1>Rede Sigma</h1>
+                </a>
+            </div>
+
+            <nav>
+                <a href="{% url 'vendedor_list' %}">Vendedores</a>
+                <a href="{% url 'montadora_list' %}">Montadoras</a>
+                <a href="{% url 'operacoes_page' %}">Operações</a>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<main>
+    {% block content %}{% endblock %}
+</main>
+</body>
+</html>
