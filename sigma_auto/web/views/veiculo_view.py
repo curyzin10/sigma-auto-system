@@ -35,7 +35,8 @@ def veiculo_update(request, pk):
     cancel_url = 'veiculo_page'
     veiculo = get_object_or_404(Veiculo, pk=pk)
     if request.method == 'POST':
-        form = VeiculoForm(request.POST, instance=veiculo)
+        form = VeiculoForm(request.POST, request.FILES, instance=veiculo)
+
         if form.is_valid():
             form.save()
             return redirect('veiculo_page')  # Redireciona para a lista de clientes
